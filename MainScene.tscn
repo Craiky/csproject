@@ -1,3 +1,35 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ArchedTower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CameraController.gd" type="Script" id=3]
+[ext_resource path="res://Temple.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tower.tscn" type="PackedScene" id=5]
 
 [node name="MainScene" type="Node2D"]
+
+[node name="ArchedTower2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -696, 370 )
+rotation = 3.14159
+scale = Vector2( 0.5, -0.5 )
+
+[node name="ArchedTower" parent="." instance=ExtResource( 2 )]
+position = Vector2( 242, 369 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Temple" parent="." instance=ExtResource( 4 )]
+position = Vector2( -192, -56 )
+scale = Vector2( 0.64, 0.64 )
+
+[node name="Tower" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1248, 252 )
+scale = Vector2( 0.64, 0.64 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 287, -72 )
+scale = Vector2( 0.08, 0.08 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 288, -72 )
+current = true
+script = ExtResource( 3 )
