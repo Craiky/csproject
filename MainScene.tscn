@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ArchedTower.tscn" type="PackedScene" id=2]
@@ -17,39 +17,42 @@
 [ext_resource path="res://Sprites/sky.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/sun.png" type="Texture" id=17]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Sprite
-
-onready var camera = get_node(\"/root/MainScene/Camera2D\")
-
-func _process(_delta):
-	position.x = camera.position.x
-	position.y = -922
-"
-
 [node name="MainScene" type="Node2D"]
 
-[node name="Sky" type="Sprite" parent="."]
-position = Vector2( 8411, -1155 )
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0, 1 )
+
+[node name="Sky" type="Sprite" parent="Background/Sky"]
+position = Vector2( 7020, -1171 )
 scale = Vector2( 1.02728, 1.78512 )
 texture = ExtResource( 15 )
 
-[node name="Sun" type="Sprite" parent="."]
-position = Vector2( 1302, -919 )
+[node name="Sun" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.1, 1 )
+
+[node name="Sun" type="Sprite" parent="Background/Sun"]
+position = Vector2( 984, -1072 )
 scale = Vector2( 0.699831, 0.699831 )
 texture = ExtResource( 17 )
-script = SubResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="BackSand1" type="Sprite" parent="."]
-position = Vector2( 8192, -649 )
+[node name="Dunes #1" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.2, 1 )
+
+[node name="BackSand1" type="Sprite" parent="Background/Dunes #1"]
+position = Vector2( 6801, -652 )
 scale = Vector2( 1, 0.998462 )
 texture = ExtResource( 9 )
 
-[node name="BackSand2" type="Sprite" parent="."]
-position = Vector2( 8192, -649 )
+[node name="Dunes #2" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0.5, 1 )
+
+[node name="BackSand2" type="Sprite" parent="Background/Dunes #2"]
+position = Vector2( 6799, -655 )
 scale = Vector2( 1, 0.998462 )
 texture = ExtResource( 13 )
 
@@ -75,15 +78,18 @@ position = Vector2( 10393, -671 )
 scale = Vector2( 0.699831, 0.699831 )
 
 [node name="Aquifer_Steps" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4756, -302 )
+position = Vector2( 4754, -387 )
 
 [node name="Aquifer_Bridge" parent="." instance=ExtResource( 8 )]
-position = Vector2( 7179, -286 )
+position = Vector2( 7190, -225 )
 scale = Vector2( 0.862371, 0.862371 )
 
 [node name="Leaning Tower" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1951, -323 )
 scale = Vector2( 0.754792, 0.754792 )
+
+[node name="Terrain" parent="." instance=ExtResource( 10 )]
+position = Vector2( 8192, -648 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 577, -506 )
@@ -100,15 +106,23 @@ limit_right = 16377
 limit_bottom = 0
 script = ExtResource( 3 )
 
-[node name="Terrain" parent="." instance=ExtResource( 10 )]
-position = Vector2( 8192, -648 )
+[node name="Foreground" type="ParallaxBackground" parent="."]
+layer = 1
 
-[node name="FrontSand1" type="Sprite" parent="."]
-position = Vector2( 8192, -648.5 )
+[node name="Rocks #1" type="ParallaxLayer" parent="Foreground"]
+motion_scale = Vector2( 1.5, 1 )
+motion_mirroring = Vector2( 16384, 0 )
+
+[node name="FrontSand1" type="Sprite" parent="Foreground/Rocks #1"]
+position = Vector2( 8195, -645 )
 scale = Vector2( 1, 0.997692 )
 texture = ExtResource( 11 )
 
-[node name="FrontSand2" type="Sprite" parent="."]
-position = Vector2( 8192, -649 )
+[node name="Rocks #2" type="ParallaxLayer" parent="Foreground"]
+motion_scale = Vector2( 2, 1 )
+motion_mirroring = Vector2( 13308, 0 )
+
+[node name="FrontSand2" type="Sprite" parent="Foreground/Rocks #2"]
+position = Vector2( 6636, -557 )
 scale = Vector2( 1, 0.998462 )
 texture = ExtResource( 14 )

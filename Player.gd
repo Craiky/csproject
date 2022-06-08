@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 const gravity = 30
-const acceleration = 80
-const maxSpeed = 500
-const jumpHeight = -1000
+const acceleration = 30
+const maxSpeed = 800
+const jumpHeight = -1200
 
 var canJump = true;
 var jumpWasPressed = false;
@@ -19,16 +19,24 @@ func _physics_process(delta):
 	motion.y += gravity
 	var friction = false
 	sprite.animation = "walking"
+	var targetSpeed = 0;
+	var speedDiff = 0;
 	
 	if Input.is_action_pressed("move_left"):
-		motion.x = max(motion.x-acceleration, -maxSpeed)
+		targetSpeed = -maxSpeed
+		speedDiff = 1-motion.x/targetSpeed
+		motion.x = max(motion.x-acceleration*speedDiff, -maxSpeed)
 		sprite.flip_h = true
 	elif Input.is_action_pressed("move_right"):
-		motion.x = min(motion.x+acceleration, maxSpeed)
+		targetSpeed = maxSpeed
+		speedDiff = 1-motion.x/targetSpeed
+		motion.x = min(motion.x+acceleration*speedDiff, maxSpeed)
 		sprite.flip_h = false
 	else:
 		sprite.animation = "idle"
 		friction = true
+	
+	
 		
 	if is_on_floor():
 		canJump = true
@@ -47,11 +55,15 @@ func _physics_process(delta):
 		if canJump == true:
 			motion.y = jumpHeight
 			canJump = false
-			
+	
+	if Input.is_action_just_released("jump") && motion.y < -100:
+		motion.y = -100;
+	
 	if Input.is_action_pressed("down"):
 		canJump = false
-		fall_through()		
-	elif Input.is_action_just_released("down"):
+		if is_on_floor():
+			fall_through()	
+	if Input.is_action_just_released("down"):
 		cancel_fall_through()
 	
 	motion = move_and_slide(motion, Vector2.UP)
@@ -66,8 +78,7 @@ func rememberJump():
 	jumpWasPressed = false
 	
 func fall_through():
-	if is_on_floor():
-		set_collision_mask_bit(1, false)
+	set_collision_mask_bit(1, false)
 		
 func cancel_fall_through():
 	if get_collision_mask_bit(1) == false:
