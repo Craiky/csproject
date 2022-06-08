@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const gravity = 20
-const acceleration = 50
-const maxSpeed = 300
-const jumpHeight = -800
+const gravity = 30
+const acceleration = 80
+const maxSpeed = 500
+const jumpHeight = -1000
 
 var canJump = true;
 var jumpWasPressed = false;
@@ -75,6 +75,6 @@ func cancel_fall_through():
 
 func isDead():
 	if position.y > 800:
-		position.y = -80
-		position.x = 200
+		position.y = -500
+		position.x = 500
 		print("you died")
