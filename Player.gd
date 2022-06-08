@@ -1,60 +1,80 @@
 extends KinematicBody2D
 
-# stats
-var score : int = 0
-# physics
-var speed : int = 200
-var jumpForce : int = 700
-var gravity : int = 800
-var vel : Vector2 = Vector2()
-var grounded : bool = false
-var lives = 3
-# components
-onready var sprite = $Sprite
+const gravity = 20
+const acceleration = 50
+const maxSpeed = 300
+const jumpHeight = -800
+
+var canJump = true;
+var jumpWasPressed = false;
+var motion = Vector2()
+var score = 0;
+var lives = 3;
+
+onready var sprite = $AnimatedSprite
 
 
 func _physics_process(delta):
-	# reset horizontal velocity
-	vel.x = 0
-	# movement inputs
+	
+	motion.y += gravity
+	var friction = false
+	sprite.animation = "walking"
+	
 	if Input.is_action_pressed("move_left"):
-		vel.x -= speed
-	if Input.is_action_pressed("move_right"):
-		vel.x += speed
-	# gravity
-	vel.y += gravity * delta
-	# jump input
-	if Input.is_action_pressed("jump") and is_on_floor():
-		vel.y -= jumpForce
-	# applying the velocity
-	vel = move_and_slide(vel, Vector2.UP)
-	
-	# sprite direction
-	if vel.x < 0:
+		motion.x = max(motion.x-acceleration, -maxSpeed)
 		sprite.flip_h = true
-	elif vel.x > 0:
+	elif Input.is_action_pressed("move_right"):
+		motion.x = min(motion.x+acceleration, maxSpeed)
 		sprite.flip_h = false
+	else:
+		sprite.animation = "idle"
+		friction = true
 		
-	collision()
+	if is_on_floor():
+		canJump = true
+		if jumpWasPressed:
+			motion.y = jumpHeight
+		if friction == true:
+			motion.x = lerp(motion.x,0,0.2)
+	else:
+		coyoteTime()
+		if friction == true:
+			motion.x = lerp(motion.x,0,0.05)
+			
+	if Input.is_action_pressed("jump"):
+		jumpWasPressed = true
+		rememberJump()
+		if canJump == true:
+			motion.y = jumpHeight
+			canJump = false
+			
+	if Input.is_action_pressed("down"):
+		canJump = false
+		fall_through()		
+	elif Input.is_action_just_released("down"):
+		cancel_fall_through()
+	
+	motion = move_and_slide(motion, Vector2.UP)
+	isDead()
+	
+func coyoteTime():
+	yield(get_tree().create_timer(.15),"timeout")
+	canJump = false
+	
+func rememberJump():
+	yield(get_tree().create_timer(.1),"timeout")
+	jumpWasPressed = false
+	
+func fall_through():
+	if is_on_floor():
+		set_collision_mask_bit(1, false)
+		
+func cancel_fall_through():
+	if get_collision_mask_bit(1) == false:
+		set_collision_mask_bit(1, true)
 
-func collision():
+func isDead():
 	if position.y > 800:
-		if lives == 1:
-			print("You Died")
-			lives -= 1
-		elif lives > 0:
-			position.y = -72
-			position.x = 282
-			lives -= 1
-	
-	
-		
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		position.y = -80
+		position.x = 200
+		print("you died")
