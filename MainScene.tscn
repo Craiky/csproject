@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ArchedTower.tscn" type="PackedScene" id=2]
@@ -15,7 +15,10 @@
 [ext_resource path="res://Sprites/back_sand2.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/front_sand2.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/sky.png" type="Texture" id=15]
+[ext_resource path="res://Start_Temple.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Sprites/sun.png" type="Texture" id=17]
+[ext_resource path="res://End_Temple.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Ending.tscn" type="PackedScene" id=19]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Sprite
@@ -59,12 +62,16 @@ rotation = 3.14159
 scale = Vector2( 0.5, -0.5 )
 
 [node name="ArchedTower" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2753, -750 )
+position = Vector2( 3194, -750 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Temple" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1255, -808 )
+position = Vector2( 2026, -802 )
 scale = Vector2( 0.64, 0.64 )
+
+[node name="End_Temple" parent="." instance=ExtResource( 18 )]
+position = Vector2( 15490, -757 )
+scale = Vector2( 0.620806, 0.620806 )
 
 [node name="Tower" parent="." instance=ExtResource( 5 )]
 position = Vector2( 9483, -849 )
@@ -81,13 +88,21 @@ position = Vector2( 4756, -302 )
 position = Vector2( 7179, -286 )
 scale = Vector2( 0.862371, 0.862371 )
 
+[node name="Start_Temple" parent="." instance=ExtResource( 16 )]
+position = Vector2( 512, -850 )
+scale = Vector2( 0.624352, 0.624352 )
+
 [node name="Leaning Tower" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1951, -323 )
+position = Vector2( 2592, -408 )
 scale = Vector2( 0.754792, 0.754792 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 577, -506 )
+position = Vector2( 643, -647 )
 scale = Vector2( 0.174592, 0.109801 )
+
+[node name="Ending" parent="." instance=ExtResource( 19 )]
+position = Vector2( 15777, -696 )
+scale = Vector2( 0.620806, 0.620806 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 954, -498 )
