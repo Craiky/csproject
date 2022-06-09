@@ -86,6 +86,6 @@ func cancel_fall_through():
 
 func isDead():
 	if position.y > 800:
-		position.y = -647
-		position.x = 643
+		position.y = -663
+		position.x = 629
 		print("you died")

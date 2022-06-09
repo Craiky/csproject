@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ArchedTower.tscn" type="PackedScene" id=2]
@@ -15,7 +15,10 @@
 [ext_resource path="res://Sprites/back_sand2.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/front_sand2.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/sky.png" type="Texture" id=15]
+[ext_resource path="res://Ending.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Sprites/sun.png" type="Texture" id=17]
+[ext_resource path="res://End_Temple.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Start_Temple.tscn" type="PackedScene" id=19]
 
 [node name="MainScene" type="Node2D"]
 
@@ -56,44 +59,65 @@ position = Vector2( 6799, -655 )
 scale = Vector2( 1, 0.998462 )
 texture = ExtResource( 13 )
 
-[node name="ArchedTower2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 9150, -747 )
-rotation = 3.14159
-scale = Vector2( 0.5, -0.5 )
-
 [node name="ArchedTower" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2753, -750 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 3194, -790 )
+scale = Vector2( 0.550584, 0.550584 )
 
 [node name="Temple" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1255, -808 )
+position = Vector2( 1872, -795 )
 scale = Vector2( 0.64, 0.64 )
 
-[node name="Tower" parent="." instance=ExtResource( 5 )]
-position = Vector2( 9483, -849 )
+[node name="Start_Temple" parent="." instance=ExtResource( 19 )]
+position = Vector2( 502, -870 )
 scale = Vector2( 0.64, 0.64 )
+
+[node name="ArchedTower2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 8986, -800 )
+rotation = 3.14159
+scale = Vector2( 0.567239, -0.567239 )
+
+[node name="Tower2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 12261, -905 )
+scale = Vector2( 0.72514, 0.72514 )
+
+[node name="Tower" parent="." instance=ExtResource( 5 )]
+position = Vector2( 9364, -857 )
+scale = Vector2( 0.73996, 0.73996 )
 
 [node name="Mashrabiya" parent="." instance=ExtResource( 12 )]
 position = Vector2( 10393, -671 )
 scale = Vector2( 0.699831, 0.699831 )
 
 [node name="Aquifer_Steps" parent="." instance=ExtResource( 7 )]
-position = Vector2( 4754, -387 )
+position = Vector2( 4764, -384 )
+scale = Vector2( 0.888988, 0.888988 )
 
 [node name="Aquifer_Bridge" parent="." instance=ExtResource( 8 )]
-position = Vector2( 7190, -225 )
-scale = Vector2( 0.862371, 0.862371 )
+position = Vector2( 7247, -794 )
+scale = Vector2( 0.814956, 0.814956 )
+
+[node name="Temple2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 11440, -829 )
+scale = Vector2( 0.679889, 0.679889 )
 
 [node name="Leaning Tower" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1951, -323 )
+position = Vector2( 2511, -358 )
 scale = Vector2( 0.754792, 0.754792 )
+
+[node name="End_Temple" parent="." instance=ExtResource( 18 )]
+position = Vector2( 14135, -776 )
+scale = Vector2( 0.649411, 0.649411 )
 
 [node name="Terrain" parent="." instance=ExtResource( 10 )]
 position = Vector2( 8192, -648 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 577, -506 )
+position = Vector2( 629, -663 )
 scale = Vector2( 0.174592, 0.109801 )
+
+[node name="Ending" parent="." instance=ExtResource( 16 )]
+position = Vector2( 14435.7, -713.007 )
+scale = Vector2( 0.649411, 0.649411 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 954, -498 )
