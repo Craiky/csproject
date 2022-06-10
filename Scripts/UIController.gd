@@ -14,7 +14,7 @@ func _process(_delta):
 		rect_position.y = player.position.y-750
 
 func _ready ():
-	scoreText.text = "0"
+	scoreText.text = "x0"
 
 func set_score_text (score):
-	scoreText.text = str(score)
+	scoreText.text = "x"+str(score)
