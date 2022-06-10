@@ -7,14 +7,16 @@
 extents = Vector2( 72.6632, 73.9702 )
 
 [node name="SuperCoin" type="Area2D"]
+scale = Vector2( 0.474054, 0.474054 )
 script = ExtResource( 1 )
 value = 5
 
 [node name="SuperCoin" type="Sprite" parent="."]
+position = Vector2( 0, -8.43785 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 3, 12 )
+position = Vector2( 0, 1.90735e-06 )
 rotation = 0.785398
 shape = SubResource( 1 )
 
