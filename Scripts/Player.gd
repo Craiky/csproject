@@ -11,8 +11,6 @@ var motion = Vector2()
 var score = 0;
 var lives = 3;
 
-onready var sprite = $Sprite
-
 onready var ui = get_node("/root/MainScene/UI")
 
 func _physics_process(_delta):
@@ -26,12 +24,10 @@ func _physics_process(_delta):
 		targetSpeed = -maxSpeed
 		speedDiff = 1-motion.x/targetSpeed
 		motion.x = max(motion.x-acceleration*speedDiff, -maxSpeed)
-		sprite.flip_h = true
 	elif Input.is_action_pressed("move_right"):
 		targetSpeed = maxSpeed
 		speedDiff = 1-motion.x/targetSpeed
 		motion.x = min(motion.x+acceleration*speedDiff, maxSpeed)
-		sprite.flip_h = false
 	else:
 		friction = true
 	
