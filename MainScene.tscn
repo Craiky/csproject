@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Terrain/ArchedTower.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Terrain/End_Temple.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Terrain/Start_Temple.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Objects/SuperCoin.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Objects/Enemy.tscn" type="PackedScene" id=21]
 
 [node name="MainScene" type="Node2D"]
 
@@ -367,6 +368,79 @@ position = Vector2( 3078, -644 )
 
 [node name="Coin61" parent="Coins" instance=ExtResource( 3 )]
 position = Vector2( 2022, -607 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 4946, -1046 )
+scale = Vector2( 0.15, 0.15 )
+dir = 1
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 3951, -652 )
+rotation = -0.188496
+scale = Vector2( 0.15, 0.15 )
+dir = 0
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 10670, -1395 )
+rotation = 0.10821
+scale = Vector2( 0.15, 0.15 )
+dir = 1
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 11065, -645 )
+rotation = -0.240855
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 12816, -939 )
+rotation = -0.132645
+scale = Vector2( 0.15, 0.15 )
+dir = 0
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 12844, -729 )
+rotation = -0.132645
+scale = Vector2( 0.15, 0.15 )
+dir = 0
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 12062, -940 )
+rotation = 0.141372
+scale = Vector2( 0.15, 0.15 )
+dir = 0
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 9859, -950 )
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 8225, -1088 )
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 8757, -844 )
+scale = Vector2( 0.15, 0.15 )
+dir = 1
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 8856, -490 )
+scale = Vector2( 0.15, 0.15 )
+dir = 0
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 9821, -1295 )
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 7263, -1624 )
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 7624, -1975 )
+scale = Vector2( 0.15, 0.15 )
+dir = 1
 
 [node name="Front Terrain" type="Node2D" parent="."]
 

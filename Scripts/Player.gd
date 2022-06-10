@@ -36,7 +36,7 @@ func _physics_process(_delta):
 	if is_on_floor():
 		canJump = true
 		if jumpWasPressed:
-			motion.y = jumpHeight
+			jump(1)
 		if friction == true:
 			motion.x = lerp(motion.x,0,0.2)
 	else:
@@ -48,8 +48,7 @@ func _physics_process(_delta):
 		jumpWasPressed = true
 		rememberJump()
 		if canJump == true:
-			motion.y = jumpHeight
-			canJump = false
+			jump(1)
 	
 	if Input.is_action_just_released("jump") && motion.y < -100:
 		motion.y = -100;
@@ -87,4 +86,6 @@ func collect_coin(value):
 	score += value
 	ui.set_score_text(score)
 	
-
+func jump(value):
+	motion.y = jumpHeight*value
+	canJump = false
