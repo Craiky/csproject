@@ -5,6 +5,7 @@ const maxSpeed = 300
 
 var velocity = Vector2()
 export var dir = -1 #  -1 = left, 1 = right, 0 = no move
+export var hasG = true
 
 func _ready():
 	$ray.position.x = $CollisionShape2D.shape.get_extents().x*dir
@@ -14,8 +15,9 @@ func _physics_process(_delta):
 	if is_on_wall() || !$ray.is_colliding() && is_on_floor():
 		dir *= -1
 		$ray.position.x = $CollisionShape2D.shape.get_extents().x*dir
-		
-	velocity.y += gravity
+	
+	if hasG:
+		velocity.y += gravity
 	
 	velocity.x = maxSpeed*dir
 	
@@ -27,6 +29,7 @@ func _on_Area2D_body_entered(body):
 		body.jump(0.7)
 		body.collect_coin(10)
 		dir =0
+		hasG = true
 		scale.y = 0.01
 		set_collision_layer_bit(2, false)
 		set_collision_mask_bit(2, false)

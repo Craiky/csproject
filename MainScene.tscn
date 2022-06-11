@@ -381,6 +381,7 @@ position = Vector2( 3951, -652 )
 rotation = -0.188496
 scale = Vector2( 0.15, 0.15 )
 dir = 0
+hasG = false
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 21 )]
 position = Vector2( 10670, -1395 )
@@ -398,18 +399,21 @@ position = Vector2( 12816, -939 )
 rotation = -0.132645
 scale = Vector2( 0.15, 0.15 )
 dir = 0
+hasG = false
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource( 21 )]
 position = Vector2( 12844, -729 )
 rotation = -0.132645
 scale = Vector2( 0.15, 0.15 )
 dir = 0
+hasG = false
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource( 21 )]
 position = Vector2( 12062, -940 )
 rotation = 0.141372
 scale = Vector2( 0.15, 0.15 )
 dir = 0
+hasG = false
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 21 )]
 position = Vector2( 9859, -950 )
@@ -428,10 +432,12 @@ dir = 1
 position = Vector2( 8856, -490 )
 scale = Vector2( 0.15, 0.15 )
 dir = 0
+hasG = false
 
 [node name="Enemy13" parent="Enemies" instance=ExtResource( 21 )]
 position = Vector2( 9821, -1295 )
 scale = Vector2( 0.15, 0.15 )
+dir = 1
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 21 )]
 position = Vector2( 7263, -1624 )

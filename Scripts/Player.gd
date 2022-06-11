@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const gravity = 30
+const gravity = 50
 const acceleration = 30
 const maxSpeed = 800
-const jumpHeight = -1200
+const jumpHeight = -1500
 
 var canJump = true;
 var jumpWasPressed = false;
@@ -13,8 +13,10 @@ var lives = 3;
 
 onready var ui = get_node("/root/MainScene/UI")
 
+func _process(delta):
+	$BetterPlayer.rotation_degrees += 180*delta
+
 func _physics_process(_delta):
-	
 	motion.y += gravity
 	var friction = false
 	var targetSpeed = 0;
