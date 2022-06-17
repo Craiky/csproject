@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const gravity = 50
+const gravity = 45
 const acceleration = 30
 const maxSpeed = 800
-const jumpHeight = -1500
+const jumpHeight = -1550
 
 var canJump = true;
 var jumpWasPressed = false;
