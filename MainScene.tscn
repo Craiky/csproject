@@ -424,18 +424,19 @@ position = Vector2( 7462, -523 )
 scale = Vector2( 0.15, 0.15 )
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource( 21 )]
-position = Vector2( 8757, -844 )
+position = Vector2( 9051, -968 )
 scale = Vector2( 0.15, 0.15 )
-dir = 1
+dir = 0
+hasG = false
 
 [node name="Enemy12" parent="Enemies" instance=ExtResource( 21 )]
-position = Vector2( 8608, -576 )
+position = Vector2( 8599, -550 )
 scale = Vector2( 0.15, 0.15 )
 dir = 0
 hasG = false
 
 [node name="Enemy13" parent="Enemies" instance=ExtResource( 21 )]
-position = Vector2( 9821, -1295 )
+position = Vector2( 9825, -1323 )
 scale = Vector2( 0.15, 0.15 )
 dir = 1
 
