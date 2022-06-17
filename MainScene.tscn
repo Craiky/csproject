@@ -125,7 +125,7 @@ rotation = 0.436332
 scale = Vector2( 0.755, 0.755 )
 
 [node name="End_Temple" parent="Back Terrain" instance=ExtResource( 18 )]
-position = Vector2( 14135, -776 )
+position = Vector2( 14129, -777 )
 scale = Vector2( 0.649411, 0.649411 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

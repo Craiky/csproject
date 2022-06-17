@@ -14,7 +14,7 @@ var lives = 3;
 onready var ui = get_node("/root/MainScene/UI")
 
 func _process(delta):
-	$BetterPlayer.rotation_degrees += 180*delta
+	$BetterPlayer.rotation_degrees += 30*delta
 
 func _physics_process(_delta):
 	motion.y += gravity
@@ -82,7 +82,14 @@ func cancel_fall_through():
 
 func isDead():
 	if position.y > 800:
-		get_tree().reload_current_scene()
+		lives -= 1
+		score = 0
+		ui.set_lives_text(lives)
+		ui.set_score_text(score)
+		if lives == -1:
+			get_tree().change_scene("res://UI/Lose.tscn")
+		position.x = 601
+		position.y = -667
 
 func collect_coin(value):
 	score += value

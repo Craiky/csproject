@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Lose.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/new_dynamicfont.tres" type="DynamicFont" id=2]
+
+[node name="Lose" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="LOSE" type="Label" parent="."]
+margin_left = 373.0
+margin_top = 158.0
+margin_right = 628.0
+margin_bottom = 230.0
+custom_fonts/font = ExtResource( 2 )
+text = "You Lost"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 387.0
+margin_top = 323.0
+margin_right = 715.0
+margin_bottom = 425.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 2 )
+text = "Next"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

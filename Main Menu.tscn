@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Ressources/new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Menu.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = -2.0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 253.0
+margin_top = 115.0
+margin_right = 793.0
+margin_bottom = 187.0
+custom_fonts/font = ExtResource( 1 )
+text = "Video Game Name"
+align = 1
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 383.0
+margin_top = 283.0
+margin_right = 786.0
+margin_bottom = 361.0
+rect_scale = Vector2( 0.7, 0.7 )
+focus_neighbour_top = NodePath("../Button")
+custom_fonts/font = ExtResource( 1 )
+text = "Start"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 387.0
+margin_top = 378.0
+margin_right = 790.0
+margin_bottom = 456.0
+rect_scale = Vector2( 0.7, 0.7 )
+focus_neighbour_bottom = NodePath("../Button2")
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -7,6 +7,8 @@ var velocity = Vector2()
 export var dir = -1 #  -1 = left, 1 = right, 0 = no move
 export var hasG = true
 
+onready var ui = get_node("/root/MainScene/UI")
+
 func _ready():
 	$ray.position.x = $CollisionShape2D.shape.get_extents().x*dir
 
@@ -43,5 +45,12 @@ func _on_Area2D_body_entered(body):
 
 func _on_damage_body_entered(body):
 	if body.name == "Player":
-		get_tree().reload_current_scene()
+		body.lives -= 1
+		body.score = 0
+		ui.set_lives_text(body.lives)
+		ui.set_score_text(body.score)
+		if body.lives == -1:
+			get_tree().change_scene("res://UI/Lose.tscn")
+		body.position.x = 601
+		body.position.y = -667
 		
