@@ -8,7 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Button.has_focus()
+	$TextureButton.has_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,5 +16,5 @@ func _ready():
 #	pass
 
 
-func _on_Button_pressed():
+func _on_TextureButton_pressed():
 	get_tree().change_scene("res://Main Menu.tscn")
